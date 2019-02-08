@@ -1,20 +1,15 @@
-from telegram.ext import Updater, CommandHandler
-
+from data_access.setup import setup_db
+from routing.routing import initialize_handlers
+from telegram.ext import Updater
 
 TOKEN = '702406299:AAF_J4EuBaMexNmpVR4Lu4hNOiDtz9dhd0c'
 
 updater = Updater(TOKEN)
 
-
-def test(bot, update):
-    update.message.reply_text(
-        'Extension is kinda cool'
-    )
-
-
-updater.dispatcher.add_handler(CommandHandler('nextwave', test))
+initialize_handlers(updater.dispatcher)
 
 updater.start_polling()
 
 updater.idle()
+
 
