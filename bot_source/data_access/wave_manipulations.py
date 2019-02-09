@@ -2,21 +2,13 @@ from data_access.base_db_operations import get_connection
 from models.wave import WaveFactory
 from consts.wave_states import WaveStates
 import json
+from consts.wave_queries import WaveQueries
 
 
 def update_wave(wave):
-    sql = '''UPDATE Waves 
-            SET Start = ?,
-                RegistrationStart = ?,
-                ExecutionStart = ?,
-                AssuringStart = ?,
-                Finish = ?,
-                UsersProfiles = ?,
-                WaveState = ?
-            WHERE ID = ?'''
     with get_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute(sql, (wave.start,
+        cursor.execute(WaveQueries.UPDATE, (wave.start,
                        wave.registrations_start,
                        wave.execution_start,
                        wave.assuring_start,
@@ -27,25 +19,21 @@ def update_wave(wave):
 
 
 def insert_wave(wave):
-    sql = '''INSERT INTO Waves(Start, RegistrationStart, ExecutionStart, AssuringStart, Finish, UsersProfiles, WaveState) 
-            VALUES(?, ?, ?, ?, ?, ?, ?)'''
     with get_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute(sql, (wave.start,
-                             wave.registrations_start,
-                             wave.execution_start,
-                             wave.assuring_start,
-                             wave.finish,
-                             wave.users_profiles,
-                             wave.wave_state))
+        cursor.execute(WaveQueries.INSERT, (wave.start,
+                                            wave.registrations_start,
+                                            wave.execution_start,
+                                            wave.assuring_start,
+                                            wave.finish,
+                                            wave.users_profiles,
+                                            wave.wave_state))
 
 
 def get_wave_in_state(state):
-    sql = '''SELECT * FROM Waves
-            WHERE WaveState = ?'''
     with get_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute(sql, (state,))
+        cursor.execute(WaveQueries.SELECT_BY_STATE, (state,))
         row = cursor.fetchone()
         if row is None:
             return None

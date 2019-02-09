@@ -1,38 +1,32 @@
 from data_access.base_db_operations import get_connection
 from models.user import UserFactory
+from consts.user_queries import UserQueries
 
 
 def insert_user(user):
-    sql = '''INSERT INTO Users(ChatId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged) 
-                VALUES(?, ?, ?, ?, ?, ?, ?)'''
     with get_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute(sql, (user.chat_id,
-                             user.username,
-                             user.first_name,
-                             user.profiles,
-                             user.is_banned,
-                             user.warnings,
-                             user.is_privileged))
+        cursor.execute(UserQueries.INSERT_QUERY, (user.chat_id,
+                                                  user.username,
+                                                  user.first_name,
+                                                  user.profiles,
+                                                  user.is_banned,
+                                                  user.warnings,
+                                                  user.is_privileged))
 
 
 def is_banned(user):
-    sql = '''SELECT ID FROM USERS WHERE 
-             Username = ? AND IsBanned = 1'''
     with get_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute(sql, (user.username, ))
+        cursor.execute(UserQueries.CHECK_USER_BANNED, (user.username, ))
         data = cursor.fetchone()
         return data is not None
 
 
 def fullfill_model(user):
-    sql = '''SELECT ID, ChatId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged
-                FROM USERS WHERE 
-                Username = ?'''
     with get_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute(sql, (user.username, ))
+        cursor.execute(UserQueries.SELECT_BY_USERNAME, (user.username, ))
         data = cursor.fetchone()
         if data is None:
             insert_user(user)
