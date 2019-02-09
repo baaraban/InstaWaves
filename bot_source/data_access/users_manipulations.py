@@ -29,7 +29,7 @@ def is_banned(user):
 def fullfill_model(user):
     sql = '''SELECT ID, ChatId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged
                 FROM USERS WHERE 
-                 Username = ?'''
+                Username = ?'''
     with get_connection() as connection:
         cursor = connection.cursor()
         cursor.execute(sql, (user.username, ))

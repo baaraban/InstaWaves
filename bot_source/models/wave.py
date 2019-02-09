@@ -1,4 +1,5 @@
 import datetime
+from consts.wave_states import WaveStates
 
 
 class Wave:
@@ -31,6 +32,19 @@ class WaveFactory:
             None,
             None,
             None,
-            None,
-            "Created"
+            '{[]}',
+            WaveStates.CREATED
+        )
+
+    @staticmethod
+    def get_wave_from_db_row(db_row):
+        return Wave(
+            db_row[0],
+            db_row[1],
+            db_row[2],
+            db_row[3],
+            db_row[4],
+            db_row[5],
+            db_row[6],
+            db_row[7]
         )
