@@ -1,7 +1,10 @@
 CREATE TABLE "Waves"(
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     Start DATE NOT NULL,
+    RegistrationStart DATE,
+    ExecutionStart DATE,
+    AssuringStart DATE,
     Finish DATE,
-    Profiles TEXT,
-    Users TEXT
+    UsersProfiles TEXT,
+    WaveState CHAR(256)
 )

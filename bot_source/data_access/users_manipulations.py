@@ -3,12 +3,13 @@ from models.user import UserFactory
 
 
 def insert_user(user):
-    sql = '''INSERT INTO Users(ChatId, Username, Profiles, IsBanned, WarningsAmount, IsPrivileged) 
-                VALUES(?, ?, ?, ?, ?, ?)'''
+    sql = '''INSERT INTO Users(ChatId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged) 
+                VALUES(?, ?, ?, ?, ?, ?, ?)'''
     with get_connection() as connection:
         cursor = connection.cursor()
         cursor.execute(sql, (user.chat_id,
                              user.username,
+                             user.first_name,
                              user.profiles,
                              user.is_banned,
                              user.warnings,
@@ -17,7 +18,7 @@ def insert_user(user):
 
 def is_banned(user):
     sql = '''SELECT ID FROM USERS WHERE 
-             Username = ? AND IsBanned = "True"'''
+             Username = ? AND IsBanned = 1'''
     with get_connection() as connection:
         cursor = connection.cursor()
         cursor.execute(sql, (user.username, ))
@@ -26,7 +27,8 @@ def is_banned(user):
 
 
 def fullfill_model(user):
-    sql = '''SELECT ID, ChatId, Username, Profiles, IsBanned, WarningsAmount, IsPrivileged FROM USERS WHERE 
+    sql = '''SELECT ID, ChatId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged
+                FROM USERS WHERE 
                  Username = ?'''
     with get_connection() as connection:
         cursor = connection.cursor()

@@ -1,8 +1,17 @@
 class User:
-    def __init__(self, name, chat_id, username, profiles, is_banned, warnings, is_privileged):
-        self.name = name
+    def __init__(self,
+                 ID,
+                 chat_id,
+                 username,
+                 first_name,
+                 profiles,
+                 is_banned,
+                 warnings,
+                 is_privileged):
+        self.ID = ID
         self.chat_id = chat_id
         self.username = username
+        self.first_name = first_name
         self.profiles = profiles
         self.is_banned = is_banned
         self.warnings = warnings
@@ -13,9 +22,10 @@ class UserFactory:
     @staticmethod
     def get_user_from_update(update):
         return User(
-            update.message.chat.first_name,
+            None,
             update.message.chat.id,
             update.message.chat.username,
+            update.message.chat.first_name,
             '',
             False,
             0,
@@ -25,11 +35,12 @@ class UserFactory:
     @staticmethod
     def get_user_from_db_row(db_row):
         return User(
-            'whatever',
+            db_row[0],
             db_row[1],
             db_row[2],
             db_row[3],
             db_row[4],
             db_row[5],
-            db_row[6]
+            db_row[6],
+            db_row[7]
         )
