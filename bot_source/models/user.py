@@ -26,7 +26,7 @@ class UserFactory:
             update.message.chat.id,
             update.message.chat.username,
             update.message.chat.first_name,
-            '',
+            '{}',
             False,
             0,
             False

@@ -6,13 +6,26 @@ from consts.user_queries import UserQueries
 def insert_user(user):
     with get_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute(UserQueries.INSERT_QUERY, (user.chat_id,
-                                                  user.username,
-                                                  user.first_name,
-                                                  user.profiles,
-                                                  user.is_banned,
-                                                  user.warnings,
-                                                  user.is_privileged))
+        cursor.execute(UserQueries.INSERT, (user.chat_id,
+                                            user.username,
+                                            user.first_name,
+                                            user.profiles,
+                                            user.is_banned,
+                                            user.warnings,
+                                            user.is_privileged))
+
+
+def update_user(user):
+    with get_connection() as connection:
+        cursor = connection.cursor()
+        cursor.execute(UserQueries.UPDATE, (user.chat_id,
+                                            user.username,
+                                            user.first_name,
+                                            user.profiles,
+                                            user.is_banned,
+                                            user.warnings,
+                                            user.is_privileged,
+                                            user.ID))
 
 
 def is_banned(user):

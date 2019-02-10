@@ -15,19 +15,19 @@ updater.start_polling()
 
 updater.idle()
 
-from models.wave import WaveFactory
-from data_access.wave_manipulations import insert_wave
-wave = WaveFactory.get_new_wave()
-insert_wave(wave)
+# from models.wave import WaveFactory
+# from data_access.wave_manipulations import insert_wave
+# wave = WaveFactory.get_new_wave()
+# insert_wave(wave)
 
 # from models.user import User
 # #import data_access.users_manipulations as u_man
-# import data_access.wave_manipulations as w_man
-# user = User(None, 1224, "insiss", 'bubu', None, False, None, None)
+# from services.user_service import UserService
+# user = User(None, 1224, "insiss", 'bubu', '{}', False, 0, False)
 # # #u_man.insert_user(user)
 # # res = u_man.fullfill_model(user)
 # # print(res)
-# w_man.register_for_wave('baaraban', user)
+# UserService.register_for_wave(user, 'baaraban')
 
 
 

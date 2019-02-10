@@ -32,7 +32,7 @@ class WaveFactory:
             None,
             None,
             None,
-            '{[]}',
+            '{}',
             WaveStates.CREATED
         )
 

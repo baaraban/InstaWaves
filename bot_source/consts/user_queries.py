@@ -9,7 +9,7 @@ class UserQueries:
                     IsPrivileged = ?
                 WHERE ID = ?'''
 
-    INSERT_QUERY = '''INSERT INTO Users(ChatId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged) 
+    INSERT = '''INSERT INTO Users(ChatId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged) 
                         VALUES(?, ?, ?, ?, ?, ?, ?)'''
 
     CHECK_USER_BANNED= '''SELECT ID FROM USERS WHERE 
