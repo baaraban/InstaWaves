@@ -9,6 +9,12 @@ def ban_user_handler(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="{} user is banned".format(username))
 
 
+def unban_user_handler(bot, update):
+    username = update.message.text.split()[1]
+    UserService.unban_user(username)
+    bot.send_message(chat_id=update.message.chat_id, text="{} user is banned".format(username))
+
+
 def warn_user_handler(bot, update):
     username = update.message.text.split()[1]
     UserService.warn_user(username)
