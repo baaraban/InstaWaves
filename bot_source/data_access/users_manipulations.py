@@ -36,6 +36,22 @@ def is_banned(user):
         return data is not None
 
 
+def user_exists(username):
+    with get_connection() as connection:
+        cursor = connection.cursor()
+        cursor.execute(UserQueries.SELECT_BY_USERNAME, (username, ))
+        data = cursor.fetchall()
+        return len(data) != 0
+
+
+def get_by_username(username):
+    with get_connection() as connection:
+        cursor = connection.cursor()
+        cursor.execute(UserQueries.SELECT_BY_USERNAME, (username, ))
+        data = cursor.fetchone()
+        return UserFactory.get_user_from_db_row(data)
+
+
 def fullfill_model(user):
     with get_connection() as connection:
         cursor = connection.cursor()

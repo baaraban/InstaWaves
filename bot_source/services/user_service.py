@@ -15,3 +15,12 @@ class UserService:
             profiles[insta_username] = insta_username
         user.profiles = json.dumps(profiles)
         u_man.update_user(user)
+
+    @staticmethod
+    def warn_user(username):
+        if not u_man.user_exists(username):
+            return
+        user = u_man.get_by_username(username)
+        user.warnings += 1
+        u_man.update_user(user)
+
