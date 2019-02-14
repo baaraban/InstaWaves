@@ -1,0 +1,3 @@
+bot_source/.idea/*
+*.sqlite
+*.pyc
