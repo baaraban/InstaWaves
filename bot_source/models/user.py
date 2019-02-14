@@ -1,7 +1,7 @@
 class User:
     def __init__(self,
                  ID,
-                 chat_id,
+                 user_id,
                  username,
                  first_name,
                  profiles,
@@ -9,7 +9,7 @@ class User:
                  warnings,
                  is_privileged):
         self.ID = ID
-        self.chat_id = chat_id
+        self.user_id = user_id
         self.username = username
         self.first_name = first_name
         self.profiles = profiles
@@ -23,9 +23,9 @@ class UserFactory:
     def get_user_from_update(update):
         return User(
             None,
-            update.message.chat.id,
-            update.message.chat.username,
-            update.message.chat.first_name,
+            update.effective_user.id,
+            update.effective_user.username,
+            update.effective_user.first_name,
             '{}',
             False,
             0,

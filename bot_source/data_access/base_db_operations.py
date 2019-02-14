@@ -3,7 +3,7 @@ import os
 
 
 DEFINITIONS_FOLDER = 'data_access/sql_definitions/'
-DB_NAME = 'bot_db.sqlite'
+DB_NAME = 'database/bot_db.sqlite'
 
 
 def get_connection():
@@ -20,3 +20,8 @@ def setup_db():
             connection.execute(stmt)
             connection.commit()
     connection.close()
+
+
+def create_db_if_not_exists():
+    if not os.path.isfile(DB_NAME):
+        setup_db()

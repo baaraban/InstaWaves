@@ -6,7 +6,7 @@ from consts.user_queries import UserQueries
 def insert_user(user):
     with get_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute(UserQueries.INSERT, (user.chat_id,
+        cursor.execute(UserQueries.INSERT, (user.user_id,
                                             user.username,
                                             user.first_name,
                                             user.profiles,
@@ -18,7 +18,7 @@ def insert_user(user):
 def update_user(user):
     with get_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute(UserQueries.UPDATE, (user.chat_id,
+        cursor.execute(UserQueries.UPDATE, (user.user_id,
                                             user.username,
                                             user.first_name,
                                             user.profiles,
@@ -36,7 +36,15 @@ def is_banned(user):
         return data is not None
 
 
-def user_exists(username):
+def user_exists_with_user_id(user_id):
+    with get_connection() as connection:
+        cursor = connection.cursor()
+        cursor.execute(UserQueries.SELECT_BY_USER_ID, (user_id, ))
+        data = cursor.fetchall()
+        return len(data) != 0
+
+
+def user_exists_with_username(username):
     with get_connection() as connection:
         cursor = connection.cursor()
         cursor.execute(UserQueries.SELECT_BY_USERNAME, (username, ))
@@ -49,17 +57,19 @@ def get_by_username(username):
         cursor = connection.cursor()
         cursor.execute(UserQueries.SELECT_BY_USERNAME, (username, ))
         data = cursor.fetchone()
-        return UserFactory.get_user_from_db_row(data)
+        if data is None:
+            return None
+        else:
+            return UserFactory.get_user_from_db_row(data)
 
 
-def fullfill_model(user):
+def get_by_user_id(user_id):
     with get_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute(UserQueries.SELECT_BY_USERNAME, (user.username, ))
+        cursor.execute(UserQueries.SELECT_BY_USER_ID, (user_id, ))
         data = cursor.fetchone()
         if data is None:
-            insert_user(user)
-            return user
+            return None
         else:
             return UserFactory.get_user_from_db_row(data)
 

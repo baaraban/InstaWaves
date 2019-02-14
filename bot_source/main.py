@@ -4,8 +4,11 @@
 #
 from routing.routing import initialize_handlers
 from telegram.ext import Updater
+from data_access.base_db_operations import create_db_if_not_exists
 
 TOKEN = '702406299:AAF_J4EuBaMexNmpVR4Lu4hNOiDtz9dhd0c'
+
+create_db_if_not_exists()
 
 updater = Updater(TOKEN)
 

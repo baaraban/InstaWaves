@@ -1,6 +1,6 @@
 class UserQueries:
     UPDATE = '''UPDATE Users 
-                SET ChatId = ?,
+                SET UserId = ?,
                     Username = ?,
                     FirstName = ?,
                     Profiles = ?,
@@ -9,12 +9,16 @@ class UserQueries:
                     IsPrivileged = ?
                 WHERE ID = ?'''
 
-    INSERT = '''INSERT INTO Users(ChatId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged) 
+    INSERT = '''INSERT INTO Users(UserId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged) 
                         VALUES(?, ?, ?, ?, ?, ?, ?)'''
 
     CHECK_USER_BANNED= '''SELECT ID FROM USERS WHERE 
-                                Username = ? AND IsBanned = 1'''
+                                UserId = ? AND IsBanned = 1'''
 
-    SELECT_BY_USERNAME = '''SELECT ID, ChatId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged
+    SELECT_BY_USER_ID = '''SELECT ID, UserId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged
                             FROM USERS WHERE 
-                            Username = ?'''
+                            UserId = ?'''
+
+    SELECT_BY_USERNAME = '''SELECT ID, UserId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged
+                                FROM USERS WHERE 
+                                USERNAME = ?'''
