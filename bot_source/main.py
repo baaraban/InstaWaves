@@ -1,7 +1,7 @@
 # from data_access.base_db_operations import setup_db
 # setup_db()
 
-
+#
 from routing.routing import initialize_handlers
 from telegram.ext import Updater
 
@@ -23,7 +23,7 @@ updater.idle()
 # from models.user import User
 # #import data_access.users_manipulations as u_man
 # from services.user_service import UserService
-# user = User(None, 1224, "insiss", 'bubu', '{}', False, 0, False)
+# user = User(None, 234862974, "baaraban", 'baaraban', '{}', False, 0, False)
 # # #u_man.insert_user(user)
 # # res = u_man.fullfill_model(user)
 # # print(res)

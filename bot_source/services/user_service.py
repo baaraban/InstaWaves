@@ -24,3 +24,12 @@ class UserService:
         user.warnings += 1
         u_man.update_user(user)
 
+    @staticmethod
+    def ban_user(username):
+        if not u_man.user_exists(username):
+            return
+        user = u_man.get_by_username(username)
+        if u_man.is_banned(user):
+            return
+        user.is_banned = True
+        u_man.update_user(user)
