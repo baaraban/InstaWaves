@@ -1,14 +1,15 @@
 from functools import wraps
+from services.status_handler import StatusHandler, Status
 
 LIST_OF_ADMINS = [234862974]
 
 
-def restricted(func):
+def admin_restricted(func):
     @wraps(func)
     def wrapped(bot, update, *args, **kwargs):
         user_id = update.effective_user.id
         if user_id not in LIST_OF_ADMINS:
-            bot.send_message(chat_id=update.message.chat_id, text="You don't have permission to complete this action")
+            StatusHandler.handle_status(bot, update, Status.Unauthorized)
             return
         return func(bot, update, *args, **kwargs)
     return wrapped

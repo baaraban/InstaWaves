@@ -28,10 +28,10 @@ def update_user(user):
                                             user.ID))
 
 
-def is_banned(user):
+def is_user_banned(user_id):
     with get_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute(UserQueries.CHECK_USER_BANNED, (user.username, ))
+        cursor.execute(UserQueries.CHECK_USER_BANNED, (user_id, ))
         data = cursor.fetchone()
         return data is not None
 
