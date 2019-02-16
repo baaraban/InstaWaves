@@ -122,7 +122,7 @@ class WaveStateAlreadyPresentMessage(Message):
 class WaveBiddingStartedMessage(Message):
     @staticmethod
     def _link_to_html(counter, link):
-        return f'{counter + 1}. <a href="{link}">post</a><br>'
+        return f'{counter + 1}. <a href="{link}">post</a>'
 
     def render(self, **kwargs):
         links = kwargs["links"]
