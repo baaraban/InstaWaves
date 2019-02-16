@@ -24,13 +24,13 @@ updater.idle()
 # insert_wave(wave)
 
 # from models.user import User
-# #import data_access.users_manipulations as u_man
+# import data_access.users_manipulations as u_man
 # from services.user_service import UserService
-# user = User(None, 234862974, "baaraban", 'baaraban', '{}', False, 0, False)
-# # #u_man.insert_user(user)
-# # res = u_man.fullfill_model(user)
-# # print(res)
-# UserService.register_for_wave(user, 'baaraban')
+# user = User(None, 4331235123, None, 'Юля', '{}', False, 0, False)
+# u_man.insert_user(user)
+# # # res = u_man.fullfill_model(user)
+# # # print(res)
+# # UserService.register_for_wave(user, 'baaraban')
 
 
 

@@ -16,7 +16,8 @@ class StatusHandler:
         Status.InstagramProfileIsPrivate: InstagramProfileIsPrivateMessage(),
         Status.UserDoesNotExist: UserDoesNotExistMessage(),
         Status.WaveStateAlreadyPresent: WaveStateAlreadyPresentMessage(),
-        Status.WaveBiddingStarted: WaveBiddingStartedMessage()
+        Status.WaveBiddingStarted: WaveBiddingStartedMessage(),
+        Status.NoWaveForRegistration: NoWaveForRegistrationMessage()
     }
 
     @staticmethod

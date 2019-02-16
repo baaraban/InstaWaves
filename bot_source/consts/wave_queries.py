@@ -1,8 +1,7 @@
 class WaveQueries:
     UPDATE = '''UPDATE Waves 
                 SET Start = ?,
-                    RegistrationStart = ?,
-                    ExecutionStart = ?,
+                    BiddingStart = ?,
                     AssuringStart = ?,
                     Finish = ?,
                     UsersProfiles = ?,
@@ -11,8 +10,8 @@ class WaveQueries:
                 WHERE ID = ?'''
 
     INSERT = '''INSERT INTO Waves
-                (Start, RegistrationStart, ExecutionStart, AssuringStart, Finish, UsersProfiles, Posts, WaveState) 
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
+                (Start, BiddingStart, AssuringStart, Finish, UsersProfiles, Posts, WaveState) 
+                VALUES(?, ?, ?, ?, ?, ?, ?)'''
 
     SELECT_BY_STATE = '''SELECT * FROM Waves
                          WHERE WaveState = ?'''

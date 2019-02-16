@@ -9,8 +9,7 @@ def update_wave(wave):
     with get_connection() as connection:
         cursor = connection.cursor()
         cursor.execute(WaveQueries.UPDATE, (wave.start,
-                       wave.registrations_start,
-                       wave.execution_start,
+                       wave.bidding_start,
                        wave.assuring_start,
                        wave.finish,
                        wave.users_profiles,
@@ -23,8 +22,7 @@ def insert_wave(wave):
     with get_connection() as connection:
         cursor = connection.cursor()
         cursor.execute(WaveQueries.INSERT, (wave.start,
-                                            wave.registrations_start,
-                                            wave.execution_start,
+                                            wave.bidding_start,
                                             wave.assuring_start,
                                             wave.finish,
                                             wave.users_profiles,

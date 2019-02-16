@@ -122,7 +122,7 @@ class WaveStateAlreadyPresentMessage(Message):
 class WaveBiddingStartedMessage(Message):
     @staticmethod
     def _link_to_html(counter, link):
-        return f'{counter + 1}. <a href="{link}">post</a>.'
+        return f'{counter + 1}. <a href="{link}">post</a><br>'
 
     def render(self, **kwargs):
         links = kwargs["links"]
@@ -130,6 +130,14 @@ class WaveBiddingStartedMessage(Message):
         for i in range(len(links)):
             result_string += WaveBiddingStartedMessage._link_to_html(i, links[i])
         return result_string
+
+    def get_parse_mode(self):
+        return ParseMode.HTML
+
+
+class NoWaveForRegistrationMessage(Message):
+    def render(self, **kwargs):
+        return "No wave available for registration"
 
     def get_parse_mode(self):
         return ParseMode.HTML

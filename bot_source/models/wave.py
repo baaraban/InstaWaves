@@ -6,8 +6,7 @@ class Wave:
     def __init__(self,
                  ID,
                  start,
-                 registrations_start,
-                 execution_start,
+                 bidding_start,
                  assuring_start,
                  finish,
                  users_profiles,
@@ -15,8 +14,7 @@ class Wave:
                  wave_state):
         self.ID = ID
         self.start = start
-        self.registrations_start = registrations_start
-        self.execution_start = execution_start
+        self.bidding_start = bidding_start
         self.assuring_start = assuring_start
         self.finish = finish
         self.users_profiles = users_profiles
@@ -30,7 +28,6 @@ class WaveFactory:
         return Wave(
             None,
             datetime.datetime.utcnow(),
-            None,
             None,
             None,
             None,
@@ -49,6 +46,5 @@ class WaveFactory:
             db_row[4],
             db_row[5],
             db_row[6],
-            db_row[7],
-            db_row[8]
+            db_row[7]
         )

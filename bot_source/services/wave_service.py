@@ -26,9 +26,12 @@ class WaveService:
         user = get_user_to_work(user)
         wave = w_man.get_wave_in_state(WaveStates.CREATED)
 
+        if wave is None:
+            return Status.NoWaveForRegistration
+
         to_work_with = json.loads(wave.users_profiles)
-        #if user.user_id in to_work_with.keys():
-            #return Status.AlreadyRegisteredForWave
+        if user.user_id in to_work_with.keys():
+            return Status.AlreadyRegisteredForWave
 
         to_work_with[user.user_id] = insta_username
         wave.users_profiles = json.dumps(to_work_with)
