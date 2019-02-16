@@ -13,8 +13,9 @@ class StatusHandler:
         Status.RegisteredForWave: RegisteredForWaveMessage(),
         Status.AlreadyRegisteredForWave: AlreadyRegisteredForWaveMessage(),
         Status.InstagramProfileDoesNotExist: InstagramProfileDoesNotExistMessage(),
-        Status.InstagramProfileIsPrivate: InstagramProfileIsPrivate(),
-        Status.UserDoesNotExist: UserDoesNotExist()
+        Status.InstagramProfileIsPrivate: InstagramProfileIsPrivateMessage(),
+        Status.UserDoesNotExist: UserDoesNotExistMessage(),
+        Status.WaveStateAlreadyPresent: WaveStateAlreadyPresentMessage()
     }
 
     @staticmethod

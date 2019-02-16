@@ -1,6 +1,5 @@
 class WaveStates:
     CREATED = "Created"
-    REGISTRATION = "Registration"
-    EXECUTION = "Execution"
+    BIDDING = "Bidding"
     ASSURING = "Assuring"
     FINISHED = "Finished"

@@ -95,7 +95,7 @@ class InstagramProfileDoesNotExistMessage(Message):
         return ParseMode.HTML
 
 
-class InstagramProfileIsPrivate(Message):
+class InstagramProfileIsPrivateMessage(Message):
     def render(self, **kwargs):
         return "{} profile is private".format(kwargs["insta_username"])
 
@@ -103,9 +103,17 @@ class InstagramProfileIsPrivate(Message):
         return ParseMode.HTML
 
 
-class UserDoesNotExist(Message):
+class UserDoesNotExistMessage(Message):
     def render(self, **kwargs):
         return "User {} does not exist".format(kwargs["username"])
+
+    def get_parser(self):
+        return ParseMode.HTML
+
+
+class WaveStateAlreadyPresentMessage(Message):
+    def render(self, **kwargs):
+        return "Wave in {} state already exists".format(kwargs["state"])
 
     def get_parser(self):
         return ParseMode.HTML
