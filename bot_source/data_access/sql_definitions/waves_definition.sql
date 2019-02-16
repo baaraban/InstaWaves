@@ -6,5 +6,6 @@ CREATE TABLE "Waves"(
     AssuringStart DATE,
     Finish DATE,
     UsersProfiles TEXT,
+    Posts TEXT,
     WaveState CHAR(256)
 )

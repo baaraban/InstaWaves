@@ -6,11 +6,12 @@ class WaveQueries:
                     AssuringStart = ?,
                     Finish = ?,
                     UsersProfiles = ?,
+                    Posts = ?,
                     WaveState = ?
                 WHERE ID = ?'''
 
     INSERT = '''INSERT INTO Waves
-                (Start, RegistrationStart, ExecutionStart, AssuringStart, Finish, UsersProfiles, WaveState) 
+                (Start, RegistrationStart, ExecutionStart, AssuringStart, Finish, UsersProfiles, Posts, WaveState) 
                 VALUES(?, ?, ?, ?, ?, ?, ?)'''
 
     SELECT_BY_STATE = '''SELECT * FROM Waves

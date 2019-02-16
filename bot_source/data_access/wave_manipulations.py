@@ -14,6 +14,7 @@ def update_wave(wave):
                        wave.assuring_start,
                        wave.finish,
                        wave.users_profiles,
+                       wave.posts,
                        wave.wave_state,
                        wave.ID))
 
@@ -27,6 +28,7 @@ def insert_wave(wave):
                                             wave.assuring_start,
                                             wave.finish,
                                             wave.users_profiles,
+                                            wave.posts,
                                             wave.wave_state))
 
 

@@ -11,6 +11,7 @@ class Wave:
                  assuring_start,
                  finish,
                  users_profiles,
+                 posts,
                  wave_state):
         self.ID = ID
         self.start = start
@@ -19,6 +20,7 @@ class Wave:
         self.assuring_start = assuring_start
         self.finish = finish
         self.users_profiles = users_profiles
+        self.posts = posts
         self.wave_state = wave_state
 
 
@@ -33,6 +35,7 @@ class WaveFactory:
             None,
             None,
             '{}',
+            '{}',
             WaveStates.CREATED
         )
 
@@ -46,5 +49,6 @@ class WaveFactory:
             db_row[4],
             db_row[5],
             db_row[6],
-            db_row[7]
+            db_row[7],
+            db_row[8]
         )
