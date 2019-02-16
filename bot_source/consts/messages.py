@@ -141,3 +141,11 @@ class NoWaveForRegistrationMessage(Message):
 
     def get_parse_mode(self):
         return ParseMode.HTML
+
+
+class UsernameIsNeededMessage(Message):
+    def render(self, **kwargs):
+        return "Please, set your username before using this logic"
+
+    def get_parse_mode(self):
+        return ParseMode.HTML
