@@ -39,13 +39,3 @@ def get_wave_in_state(state):
             return None
         else:
             return WaveFactory.get_wave_from_db_row(row)
-
-
-def register_for_wave(insta_username, user):
-    wave = get_wave_in_state(WaveStates.CREATED)
-    to_work_with = json.loads(wave.users_profiles)
-    if user.username in to_work_with.keys():
-        return
-    to_work_with[user.username] = insta_username
-    wave.users_profiles = json.dumps(to_work_with)
-    update_wave(wave)
