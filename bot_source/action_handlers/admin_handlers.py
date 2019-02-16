@@ -15,7 +15,8 @@ def create_wave_handler(bot, update):
 @admin_restricted
 @wave_status_filter(WaveStates.BIDDING)
 def start_bidding_handler(bot, update):
-    StatusHandler.handle_status(bot, update, WaveService.start_bidding())
+    status, links = WaveService.start_bidding()
+    StatusHandler.handle_status(bot, update, status, links=links)
 
 
 @admin_restricted

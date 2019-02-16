@@ -27,8 +27,8 @@ class WaveService:
         wave = w_man.get_wave_in_state(WaveStates.CREATED)
 
         to_work_with = json.loads(wave.users_profiles)
-        if user.user_id in to_work_with.keys():
-            return Status.AlreadyRegisteredForWave
+        #if user.user_id in to_work_with.keys():
+            #return Status.AlreadyRegisteredForWave
 
         to_work_with[user.user_id] = insta_username
         wave.users_profiles = json.dumps(to_work_with)
@@ -53,7 +53,14 @@ class WaveService:
 
     @staticmethod
     def start_bidding():
-        return
+        wave = w_man.get_wave_in_state(WaveStates.CREATED)
+        usernames = json.loads(wave.users_profiles).values()
+        posts, links = InstaHelper.get_posts_for_wave(usernames)
+        post_dict = {'posts': posts}
+        wave.posts = json.dumps(post_dict)
+        wave.wave_state = WaveStates.BIDDING
+        w_man.update_wave(wave)
+        return Status.WaveBiddingStarted, links
 
     @staticmethod
     def start_assuring_step():

@@ -12,3 +12,4 @@ def initialize_handlers(dispatcher):
     dispatcher.add_handler(CommandHandler('warn', ah.warn_user_handler))
     dispatcher.add_handler(CommandHandler('ban', ah.ban_user_handler))
     dispatcher.add_handler(CommandHandler('unban', ah.unban_user_handler))
+    dispatcher.add_handler(CommandHandler('start_bidding', ah.start_bidding_handler))

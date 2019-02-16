@@ -15,4 +15,5 @@ class Status(Enum):
     InstagramProfileIsPrivate = 10
     UserDoesNotExist = 11
     WaveStateAlreadyPresent = 12
+    WaveBiddingStarted = 13
 

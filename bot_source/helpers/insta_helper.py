@@ -31,18 +31,21 @@ class InstaHelper:
 
     @staticmethod
     def get_posts_for_wave(usernames):
-        result = []
+        links = []
+        posts = []
         agent = Agent()
         for user in usernames:
-            result.append(InstaHelper._get_last_post_link(agent, user))
-        return result
+            post, link = InstaHelper._get_last_post_link(agent, user)
+            posts.append(post)
+            links.append(link)
+        return [str(x) for x in posts], links
 
     @staticmethod
     def _get_last_post_link(agent, username):
         account = Account(username)
         media1, _ = agent.get_media(account, count=1)
         post = media1[0]
-        return InstaHelper.BASE_INSTAGRAM_POST_LINK.format(post)
+        return post, InstaHelper.BASE_INSTAGRAM_POST_LINK.format(post)
 
     @staticmethod
     def profile_exists(username):

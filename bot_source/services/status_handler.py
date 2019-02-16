@@ -15,7 +15,8 @@ class StatusHandler:
         Status.InstagramProfileDoesNotExist: InstagramProfileDoesNotExistMessage(),
         Status.InstagramProfileIsPrivate: InstagramProfileIsPrivateMessage(),
         Status.UserDoesNotExist: UserDoesNotExistMessage(),
-        Status.WaveStateAlreadyPresent: WaveStateAlreadyPresentMessage()
+        Status.WaveStateAlreadyPresent: WaveStateAlreadyPresentMessage(),
+        Status.WaveBiddingStarted: WaveBiddingStartedMessage()
     }
 
     @staticmethod
@@ -24,5 +25,5 @@ class StatusHandler:
         text = message.render(**kwargs)
         bot.send_message(chat_id=update.message.chat_id,
                          text=text,
-                         parser=message.get_parser()
+                         parse_mode=message.get_parse_mode()
                          )
