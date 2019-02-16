@@ -12,7 +12,7 @@ class WaveQueries:
 
     INSERT = '''INSERT INTO Waves
                 (Start, RegistrationStart, ExecutionStart, AssuringStart, Finish, UsersProfiles, Posts, WaveState) 
-                VALUES(?, ?, ?, ?, ?, ?, ?)'''
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
 
     SELECT_BY_STATE = '''SELECT * FROM Waves
                          WHERE WaveState = ?'''

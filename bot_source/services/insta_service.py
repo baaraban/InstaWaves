@@ -69,13 +69,13 @@ class InstaService:
     @staticmethod
     def register_for_wave(user, insta_username):
         def get_user_to_work(user_v):
-            if u_man.user_exists_with_username(user_v.user_id):
+            if u_man.user_exists_with_user_id(user_v.user_id):
                 return u_man.get_by_user_id(user_v.user_id)
             else:
                 u_man.insert_user(user_v)
                 return user_v
 
-        if InstaService.profile_exists(insta_username):
+        if not InstaService.profile_exists(insta_username):
             return Status.InstagramProfileDoesNotExist
 
         if InstaService.is_profile_private(insta_username):

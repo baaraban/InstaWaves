@@ -4,8 +4,17 @@ from consts.messages import *
 
 class StatusHandler:
     _handling_dict = {
+        Status.InternalError: InternalErrorMessage(),
         Status.Unauthorized: UnauthorizedMessage(),
-        Status.Banned: BannedMessage()
+        Status.Banned: BannedMessage(),
+        Status.NewWaveCreated: NewWaveCreatedMessage(),
+        Status.UserIsBanned: UserIsBannedMessage(),
+        Status.UserIsWarned: UserIsWarnedMessage(),
+        Status.RegisteredForWave: RegisteredForWaveMessage(),
+        Status.AlreadyRegisteredForWave: AlreadyRegisteredForWaveMessage(),
+        Status.InstagramProfileDoesNotExist: InstagramProfileDoesNotExistMessage(),
+        Status.InstagramProfileIsPrivate: InstagramProfileIsPrivate(),
+        Status.UserDoesNotExist: UserDoesNotExist()
     }
 
     @staticmethod
