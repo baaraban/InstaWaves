@@ -18,4 +18,5 @@ class Status(Enum):
     WaveBiddingStarted = 13
     NoWaveForRegistration = 14
     UsernameIsNeeded = 15
+    NotCorrectParametersPassed = 16
 

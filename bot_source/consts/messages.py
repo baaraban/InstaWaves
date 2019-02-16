@@ -149,3 +149,11 @@ class UsernameIsNeededMessage(Message):
 
     def get_parse_mode(self):
         return ParseMode.HTML
+
+
+class NotCorrectParametersPassedMessage(Message):
+    def render(self, **kwargs):
+        return "Incorrect parameters passed"
+
+    def get_parse_mode(self):
+        return ParseMode.HTML

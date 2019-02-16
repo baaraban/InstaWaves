@@ -18,7 +18,8 @@ class StatusHandler:
         Status.WaveStateAlreadyPresent: WaveStateAlreadyPresentMessage(),
         Status.WaveBiddingStarted: WaveBiddingStartedMessage(),
         Status.NoWaveForRegistration: NoWaveForRegistrationMessage(),
-        Status.UsernameIsNeeded: UsernameIsNeededMessage()
+        Status.UsernameIsNeeded: UsernameIsNeededMessage(),
+        Status.NotCorrectParametersPassed: NotCorrectParametersPassedMessage()
     }
 
     @staticmethod

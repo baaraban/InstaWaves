@@ -1,5 +1,6 @@
 from internal_decorators.admin_restricted import admin_restricted
 from internal_decorators.wave_status_filter import wave_status_filter
+from internal_decorators.parameters_needed import parameters_needed
 from consts.wave_states import WaveStates
 from services.wave_service import WaveService
 from services.user_service import UserService
@@ -26,18 +27,21 @@ def assuring_step_handler(bot, update):
 
 
 @admin_restricted
+@parameters_needed(1)
 def ban_user_handler(bot, update):
     username = update.message.text.split()[1]
     StatusHandler.handle_status(bot, update, UserService.ban_user(username), username=username)
 
 
 @admin_restricted
+@parameters_needed(1)
 def unban_user_handler(bot, update):
     username = update.message.text.split()[1]
     StatusHandler.handle_status(bot, update, UserService.unban_user(username), username=username)
 
 
 @admin_restricted
+@parameters_needed(1)
 def warn_user_handler(bot, update):
     username = update.message.text.split()[1]
     StatusHandler.handle_status(bot, update, UserService.warn_user(username), username=username)
