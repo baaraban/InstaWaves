@@ -202,3 +202,11 @@ class SendPayLinkMessage(Message):
 
     def get_parse_mode(self):
         return ParseMode.HTML
+
+
+class InstagramProfileHasNoPostsMessage(Message):
+    def render(self, **kwargs):
+        return "Current profile has no posts"
+
+    def get_parse_mode(self):
+        return ParseMode.HTML

@@ -58,6 +58,13 @@ class InstaHelper:
             return False
 
     @staticmethod
+    def has_post(username):
+        agent = Agent()
+        account = Account(username)
+        media1, _ = agent.get_media(account)
+        return len(media1) != 0
+
+    @staticmethod
     def is_profile_private(username):
         agent = Agent()
         account = Account(username)

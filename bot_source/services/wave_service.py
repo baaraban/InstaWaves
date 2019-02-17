@@ -26,6 +26,9 @@ class WaveService:
         if InstaHelper.is_profile_private(insta_username):
             return Status.InstagramProfileIsPrivate
 
+        if not InstaHelper.has_post(insta_username):
+            return Status.InstagramProfileHasNoPosts
+
         user = get_user_to_work(user)
         wave = w_man.get_wave_in_state(WaveStates.CREATED)
 

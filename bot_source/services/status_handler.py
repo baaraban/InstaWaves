@@ -22,7 +22,8 @@ class StatusHandler:
         Status.NotCorrectParametersPassed: NotCorrectParametersPassedMessage(),
         Status.AssuringStepStarted: AssuringStepStartedMessage(),
         Status.WaveIsFinished: WaveIsFinishedMessage(),
-        Status.SendPayLink: SendPayLinkMessage()
+        Status.SendPayLink: SendPayLinkMessage(),
+        Status.InstagramProfileHasNoPosts: InstagramProfileHasNoPostsMessage()
     }
 
     @staticmethod
