@@ -36,7 +36,7 @@ class WaveService:
             return Status.NoWaveForRegistration
 
         to_work_with = json.loads(wave.users_profiles)
-        if user.user_id in to_work_with.keys():
+        if user.user_id in to_work_with.keys() or insta_username in to_work_with.values():
             return Status.AlreadyRegisteredForWave
 
         to_work_with[user.user_id] = insta_username
