@@ -7,6 +7,7 @@ def initialize_handlers(dispatcher):
     # common actions handlers
     dispatcher.add_handler(CommandHandler('register', ch.register_handler))
     dispatcher.add_handler(CommandHandler('pay', ch.pay_handler))
+    dispatcher.add_handler(CommandHandler('quit_wave', ch.quit_wave_handler))
 
     # admin actions handlers
     dispatcher.add_handler(CommandHandler('create_wave', ah.create_wave_handler))

@@ -23,7 +23,9 @@ class StatusHandler:
         Status.AssuringStepStarted: AssuringStepStartedMessage(),
         Status.WaveIsFinished: WaveIsFinishedMessage(),
         Status.SendPayLink: SendPayLinkMessage(),
-        Status.InstagramProfileHasNoPosts: InstagramProfileHasNoPostsMessage()
+        Status.InstagramProfileHasNoPosts: InstagramProfileHasNoPostsMessage(),
+        Status.NotRegisteredInWave: NotRegisteredInWaveMessage(),
+        Status.UnregisteredFromWave: UnregisteredFromWaveMessage()
     }
 
     @staticmethod

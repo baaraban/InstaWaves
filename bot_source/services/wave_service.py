@@ -52,6 +52,31 @@ class WaveService:
         return Status.RegisteredForWave
 
     @staticmethod
+    def delete_user_from_wave(user):
+        def get_user_to_work(user_v):
+            if u_man.user_exists_with_user_id(user_v.user_id):
+                return u_man.get_by_user_id(user_v.user_id)
+            else:
+                u_man.insert_user(user_v)
+                return user_v
+
+        user = get_user_to_work(user)
+        wave = w_man.get_wave_in_state(WaveStates.CREATED)
+
+        if wave is None:
+            return Status.NoWaveForRegistration
+
+        to_work_with = json.loads(wave.users_profiles)
+        if user.user_id not in to_work_with.keys():
+            return Status.NotRegisteredInWave
+
+        del to_work_with[user.user.user_id]
+        wave.users_profiles = json.dumps(to_work_with)
+        w_man.update_wave(wave)
+
+        return Status.UnregisteredFromWave
+
+    @staticmethod
     def create_wave():
         try:
             new_wave = WaveFactory.get_new_wave()

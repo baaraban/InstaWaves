@@ -26,4 +26,12 @@ def pay_handler(bot, update):
                                 Status.SendPayLink)
 
 
+@ban_restricted
+def quit_wave_handler(bot, update):
+    user = UserFactory.get_user_from_update(update)
+    StatusHandler.handle_status(bot,
+                                update,
+                                WaveService.delete_user_from_wave(user))
+
+
 

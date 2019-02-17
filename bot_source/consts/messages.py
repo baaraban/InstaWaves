@@ -218,3 +218,21 @@ class WarnIsRemovedFromUserMessage(Message):
 
     def get_parse_mode(self):
         return ParseMode.HTML
+
+
+class NotRegisteredInWaveMessage(Message):
+    def render(self, **kwargs):
+        return "You didn't register for a wave"
+
+    def get_parse_mode(self):
+        return ParseMode.HTML
+
+
+class UnregisteredFromWaveMessage(Message):
+    def render(self, **kwargs):
+        return "You are unregistered from current wave"
+
+    def get_parse_mode(self):
+        return ParseMode.HTML
+
+

@@ -24,4 +24,7 @@ class Status(Enum):
     SendPayLink = 19
     InstagramProfileHasNoPosts = 20
     WarnIsRemovedFromUser = 21
+    NotRegisteredInWave = 22
+    UnregisteredFromWave = 23
+
 
