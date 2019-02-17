@@ -1,2 +1,4 @@
 WAVE_LIMIT = 50
 WARNINGS_LIMIT = 3
+TOKEN = '702406299:AAF_J4EuBaMexNmpVR4Lu4hNOiDtz9dhd0c'
+PAY_LINK = 'generic_link.com'

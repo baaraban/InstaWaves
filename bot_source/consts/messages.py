@@ -161,7 +161,7 @@ class NotCorrectParametersPassedMessage(Message):
 
 class AssuringStepStartedMessage(Message):
     def render(self, **kwargs):
-        return "Assuring step has been started..."
+        return "Assuring step has been started... It may take few minutes"
 
     def get_parse_mode(self):
         return ParseMode.HTML
