@@ -21,4 +21,5 @@ class Status(Enum):
     NotCorrectParametersPassed = 16
     AssuringStepStarted = 17
     WaveIsFinished = 18
+    SendPayLink = 19
 

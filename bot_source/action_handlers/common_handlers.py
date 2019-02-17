@@ -4,6 +4,7 @@ from internal_decorators.ban_restricted import ban_restricted
 from internal_decorators.username_needed import username_needed
 from internal_decorators.parameters_needed import parameters_needed
 from models.user import UserFactory
+from consts.statuses import Status
 
 
 @username_needed
@@ -20,7 +21,9 @@ def register_handler(bot, update):
 
 @ban_restricted
 def pay_handler(bot, update):
-    return None
+    StatusHandler.handle_status(bot,
+                                update,
+                                Status.SendPayLink)
 
 
 

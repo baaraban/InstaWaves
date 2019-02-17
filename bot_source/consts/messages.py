@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from telegram.parsemode import ParseMode
+from consts.application_level_consts import *
 
 
 class Message(ABC):
@@ -190,6 +191,14 @@ class WaveIsFinishedMessage(Message):
         summary = kwargs['summary']
         return f'{WaveIsFinishedMessage.get_warned_string(summary.warned)}' \
                f'{WaveIsFinishedMessage.get_banned_string(summary.banned)}'
+
+    def get_parse_mode(self):
+        return ParseMode.HTML
+
+
+class SendPayLinkMessage(Message):
+    def render(self, **kwargs):
+        return f'<a href="{PAY_LINK}">payment link</a>'
 
     def get_parse_mode(self):
         return ParseMode.HTML

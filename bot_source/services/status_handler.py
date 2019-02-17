@@ -21,7 +21,8 @@ class StatusHandler:
         Status.UsernameIsNeeded: UsernameIsNeededMessage(),
         Status.NotCorrectParametersPassed: NotCorrectParametersPassedMessage(),
         Status.AssuringStepStarted: AssuringStepStartedMessage(),
-        Status.WaveIsFinished: WaveIsFinishedMessage()
+        Status.WaveIsFinished: WaveIsFinishedMessage(),
+        Status.SendPayLink: SendPayLinkMessage()
     }
 
     @staticmethod
