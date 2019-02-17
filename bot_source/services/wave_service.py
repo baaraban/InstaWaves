@@ -80,11 +80,11 @@ class WaveService:
     @staticmethod
     def finish_wave():
         wave = w_man.get_wave_in_state(WaveStates.ASSURING)
-        posts = json.loads(wave.posts)
+        posts = json.loads(wave.posts)['posts']
         users_profiles = json.loads(wave.users_profiles)
         warned = InstaHelper.get_wave_warned(posts, users_profiles)
         banned = []
-        for warned_user_id, insta_profile in warned:
+        for warned_user_id, insta_profile in warned.items():
             user = u_man.get_by_user_id(warned_user_id)
             user.warnings += 1
             if user.warnings > WARNINGS_LIMIT:
@@ -92,4 +92,7 @@ class WaveService:
                 banned.append(user)
             u_man.update_user(user)
         summary = WaveSummary(warned, banned)
+        wave.finish = datetime.datetime.utcnow()
+        wave.wave_state = WaveStates.FINISHED
+        w_man.update_wave(wave)
         return Status.WaveIsFinished, summary
