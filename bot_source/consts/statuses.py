@@ -23,4 +23,5 @@ class Status(Enum):
     WaveIsFinished = 18
     SendPayLink = 19
     InstagramProfileHasNoPosts = 20
+    WarnIsRemovedFromUser = 21
 

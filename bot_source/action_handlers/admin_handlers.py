@@ -49,3 +49,10 @@ def warn_user_handler(bot, update):
     StatusHandler.handle_status(bot, update, UserService.warn_user(username), username=username)
 
 
+@admin_restricted
+@parameters_needed(1)
+def remove_warn_handler(bot, update):
+    username = update.message.text.split()[1]
+    StatusHandler.handle_status(bot, update, UserService.remove_warn_from_user(username), username=username)
+
+

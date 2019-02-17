@@ -210,3 +210,11 @@ class InstagramProfileHasNoPostsMessage(Message):
 
     def get_parse_mode(self):
         return ParseMode.HTML
+
+
+class WarnIsRemovedFromUserMessage(Message):
+    def render(self, **kwargs):
+        return "Warn is removed from {}".format(kwargs["username"])
+
+    def get_parse_mode(self):
+        return ParseMode.HTML

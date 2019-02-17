@@ -13,6 +13,15 @@ class UserService:
         return Status.UserIsWarned
 
     @staticmethod
+    def remove_warn_from_user(username):
+        if not u_man.user_exists_with_username(username):
+            return Status.UserDoesNotExist
+        user = u_man.get_by_username(username)
+        user.warnings -= 1
+        u_man.update_user(user)
+        return Status.WarnIsRemovedFromUser
+
+    @staticmethod
     def ban_user(username):
         if not u_man.user_exists_with_username(username):
             return Status.UserDoesNotExist
