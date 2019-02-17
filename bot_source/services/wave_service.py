@@ -117,7 +117,7 @@ class WaveService:
             user = u_man.get_by_user_id(warned_user_id)
             user.warnings += 1
             warned_username.append(user.username)
-            if user.warnings > WARNINGS_LIMIT:
+            if user.warnings >= WARNINGS_LIMIT:
                 user.is_banned = True
                 banned.append(user.username)
             u_man.update_user(user)

@@ -12,6 +12,7 @@ def initialize_handlers(dispatcher):
     # admin actions handlers
     dispatcher.add_handler(CommandHandler('create_wave', ah.create_wave_handler))
     dispatcher.add_handler(CommandHandler('warn', ah.warn_user_handler))
+    dispatcher.add_handler(CommandHandler('removewarn', ah.remove_warn_handler))
     dispatcher.add_handler(CommandHandler('ban', ah.ban_user_handler))
     dispatcher.add_handler(CommandHandler('unban', ah.unban_user_handler))
     dispatcher.add_handler(CommandHandler('start_bidding', ah.start_bidding_handler))

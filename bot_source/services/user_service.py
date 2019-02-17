@@ -1,5 +1,6 @@
 import data_access.users_manipulations as u_man
 from consts.statuses import Status
+from consts.application_level_consts import *
 
 
 class UserService:
@@ -9,6 +10,10 @@ class UserService:
             return Status.UserDoesNotExist
         user = u_man.get_by_username(username)
         user.warnings += 1
+        if user.warnings >= WARNINGS_LIMIT:
+            user.is_banned = True
+            u_man.update_user(user)
+            return Status.UserIsBanned
         u_man.update_user(user)
         return Status.UserIsWarned
 
