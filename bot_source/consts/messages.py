@@ -161,16 +161,35 @@ class NotCorrectParametersPassedMessage(Message):
 
 class AssuringStepStartedMessage(Message):
     def render(self, **kwargs):
-        return "Assuring step is started"
+        return "Assuring step has been started..."
 
     def get_parse_mode(self):
         return ParseMode.HTML
 
 
 class WaveIsFinishedMessage(Message):
+    @staticmethod
+    def get_warned_string(warned):
+        if len(warned) == 0:
+            return "Nobody was warned. "
+        result = "Warned: "
+        for warn in warned:
+            result += f'{warn}, '
+        return f'{result}. '
+
+    @staticmethod
+    def get_banned_string(banned):
+        if len(banned) == 0:
+            return "Nobody was banned."
+        result = "Banned: "
+        for ban in banned:
+            result += f'{ban}, '
+        return f'{result}. '
+
     def render(self, **kwargs):
         summary = kwargs['summary']
-        return "Assuring step is started"
+        return f'{WaveIsFinishedMessage.get_warned_string(summary.warned)}' \
+               f'{WaveIsFinishedMessage.get_banned_string(summary.banned)}'
 
     def get_parse_mode(self):
         return ParseMode.HTML
