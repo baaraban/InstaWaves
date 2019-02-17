@@ -111,15 +111,17 @@ class WaveService:
         posts = json.loads(wave.posts)['posts']
         users_profiles = json.loads(wave.users_profiles)
         warned = InstaHelper.get_wave_warned(posts, users_profiles)
+        warned_username = []
         banned = []
         for warned_user_id, insta_profile in warned.items():
             user = u_man.get_by_user_id(warned_user_id)
             user.warnings += 1
+            warned_username.append(user.username)
             if user.warnings > WARNINGS_LIMIT:
                 user.is_banned = True
-                banned.append(user)
+                banned.append(user.username)
             u_man.update_user(user)
-        summary = WaveSummary(warned, banned)
+        summary = WaveSummary(warned_username, banned)
         wave.finish = datetime.datetime.utcnow()
         wave.wave_state = WaveStates.FINISHED
         w_man.update_wave(wave)
