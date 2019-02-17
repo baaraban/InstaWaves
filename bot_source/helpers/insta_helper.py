@@ -63,3 +63,25 @@ class InstaHelper:
         account = Account(username)
         agent.update(account)
         return account.is_private
+
+    @staticmethod
+    def get_warned_by_post(agent, post, users_profiles):
+        media = Media(post)
+        comments = InstaHelper.get_who_commented_post(agent, media)
+        likes = InstaHelper.get_who_liked_post(agent, media)
+        warned = {}
+        for user_id, profile in users_profiles.items():
+            if profile not in comments:
+                warned[user_id] = profile
+                continue
+            if profile not in likes:
+                warned[user_id] = profile
+        return warned
+
+    @staticmethod
+    def get_wave_warned(posts, users_profiles):
+        agent = Agent()
+        warned = []
+        for post in posts:
+            warned += InstaHelper.get_warned_by_post(agent, post, users_profiles)
+

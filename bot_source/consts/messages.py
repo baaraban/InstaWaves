@@ -157,3 +157,20 @@ class NotCorrectParametersPassedMessage(Message):
 
     def get_parse_mode(self):
         return ParseMode.HTML
+
+
+class AssuringStepStartedMessage(Message):
+    def render(self, **kwargs):
+        return "Assuring step is started"
+
+    def get_parse_mode(self):
+        return ParseMode.HTML
+
+
+class WaveIsFinishedMessage(Message):
+    def render(self, **kwargs):
+        summary = kwargs['summary']
+        return "Assuring step is started"
+
+    def get_parse_mode(self):
+        return ParseMode.HTML

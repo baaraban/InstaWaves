@@ -1,7 +1,10 @@
 import json
+import datetime
 import data_access.wave_manipulations as w_man
 import data_access.users_manipulations as u_man
 from models.wave import WaveFactory
+from models.wave_summary import WaveSummary
+from consts.application_level_consts import *
 from consts.statuses import Status
 from helpers.insta_helper import InstaHelper
 from consts.wave_states import WaveStates
@@ -62,13 +65,31 @@ class WaveService:
         post_dict = {'posts': posts}
         wave.posts = json.dumps(post_dict)
         wave.wave_state = WaveStates.BIDDING
+        wave.bidding_start = datetime.datetime.utcnow()
         w_man.update_wave(wave)
         return Status.WaveBiddingStarted, links
 
     @staticmethod
     def start_assuring_step():
-        return
+        wave = w_man.get_wave_in_state(WaveStates.BIDDING)
+        wave.wave_state = WaveStates.ASSURING
+        wave.assuring_start = datetime.datetime.utcnow()
+        w_man.update_wave(wave)
+        return Status.AssuringStepStarted
 
     @staticmethod
     def finish_wave():
-        return
+        wave = w_man.get_wave_in_state(WaveStates.ASSURING)
+        posts = json.loads(wave.posts)
+        users_profiles = json.loads(wave.users_profiles)
+        warned = InstaHelper.get_wave_warned(posts, users_profiles)
+        banned = []
+        for warned_user_id, insta_profile in warned:
+            user = u_man.get_by_user_id(warned_user_id)
+            user.warnings += 1
+            if user.warnings > WARNINGS_LIMIT:
+                user.is_banned = True
+                banned.append(user)
+            u_man.update_user(user)
+        summary = WaveSummary(warned, banned)
+        return Status.WaveIsFinished, summary

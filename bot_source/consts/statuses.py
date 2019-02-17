@@ -19,4 +19,6 @@ class Status(Enum):
     NoWaveForRegistration = 14
     UsernameIsNeeded = 15
     NotCorrectParametersPassed = 16
+    AssuringStepStarted = 17
+    WaveIsFinished = 18
 
