@@ -98,6 +98,14 @@ class WaveService:
         return Status.WaveBiddingStarted, links
 
     @staticmethod
+    def rollback_from_assuring_to_bidding():
+        wave = w_man.get_wave_in_state(WaveStates.ASSURING)
+        wave.wave_state = WaveStates.BIDDING
+        wave.assuring_start = datetime.datetime.utcnow()
+        w_man.update_wave(wave)
+        return Status.InternalError
+
+    @staticmethod
     def start_assuring_step():
         wave = w_man.get_wave_in_state(WaveStates.BIDDING)
         wave.wave_state = WaveStates.ASSURING

@@ -24,8 +24,11 @@ def start_bidding_handler(bot, update):
 @wave_status_filter(WaveStates.ASSURING)
 def assuring_step_handler(bot, update):
     StatusHandler.handle_status(bot, update, WaveService.start_assuring_step())
-    state, summary = WaveService.finish_wave()
-    StatusHandler.handle_status(bot, update, state, summary=summary)
+    try:
+        state, summary = WaveService.finish_wave()
+        StatusHandler.handle_status(bot, update, state, summary=summary)
+    except:
+        StatusHandler.handle_status(bot, update, WaveService.rollback_from_assuring_to_bidding())
 
 
 @admin_restricted
