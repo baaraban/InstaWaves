@@ -123,7 +123,7 @@ class WaveStateAlreadyPresentMessage(Message):
 class WaveBiddingStartedMessage(Message):
     @staticmethod
     def _link_to_html(counter, link):
-        return f'{counter + 1}. <a href="{link}">post</a>'
+        return f'{counter + 1}. <a href="{link}">post</a> \n'
 
     def render(self, **kwargs):
         links = kwargs["links"]
@@ -173,23 +173,23 @@ class WaveIsFinishedMessage(Message):
     def get_warned_string(warned):
         if len(warned) == 0:
             return "Nobody was warned. "
-        result = "Warned: "
+        result = "<b>Warned: </b>"
         for warn in warned:
             result += f'{warn}, '
-        return f'{result}. '
+        return f'{result[:-2]}. '
 
     @staticmethod
     def get_banned_string(banned):
         if len(banned) == 0:
             return "Nobody was banned."
-        result = "Banned: "
+        result = "<b>Banned: </b>"
         for ban in banned:
             result += f'{ban}, '
-        return f'{result}. '
+        return f'{result[:-2]}. '
 
     def render(self, **kwargs):
         summary = kwargs['summary']
-        return f'{WaveIsFinishedMessage.get_warned_string(summary.warned)}' \
+        return f'{WaveIsFinishedMessage.get_warned_string(summary.warned)} \n' \
                f'{WaveIsFinishedMessage.get_banned_string(summary.banned)}'
 
     def get_parse_mode(self):
