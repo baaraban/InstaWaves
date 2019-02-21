@@ -63,6 +63,14 @@ def get_by_username(username):
             return UserFactory.get_user_from_db_row(data)
 
 
+def get_all_privileged_users():
+    with get_connection() as connection:
+        cursor = connection.cursor()
+        cursor.execute(UserQueries.SELECT_PRIVILEGED)
+        data = cursor.fetchall()
+        return UserFactory.get_users_from_db_rows(data)
+
+
 def get_by_user_id(user_id):
     with get_connection() as connection:
         cursor = connection.cursor()

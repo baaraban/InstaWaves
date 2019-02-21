@@ -27,6 +27,15 @@ class UserService:
         return Status.WarnIsRemovedFromUser
 
     @staticmethod
+    def give_user_privilege(username):
+        if not u_man.user_exists_with_username(username):
+            return Status.UserDoesNotExist
+        user = u_man.get_by_username(username)
+        user.is_privileged = True
+        u_man.update_user(user)
+        return Status.UserIsPrivileged
+
+    @staticmethod
     def ban_user(username):
         if not u_man.user_exists_with_username(username):
             return Status.UserDoesNotExist

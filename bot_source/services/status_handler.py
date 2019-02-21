@@ -25,7 +25,8 @@ class StatusHandler:
         Status.SendPayLink: SendPayLinkMessage(),
         Status.InstagramProfileHasNoPosts: InstagramProfileHasNoPostsMessage(),
         Status.NotRegisteredInWave: NotRegisteredInWaveMessage(),
-        Status.UnregisteredFromWave: UnregisteredFromWaveMessage()
+        Status.UnregisteredFromWave: UnregisteredFromWaveMessage(),
+        Status.UserIsPrivileged: UserIsPrivilegedMessage()
     }
 
     @staticmethod

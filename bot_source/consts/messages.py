@@ -236,3 +236,9 @@ class UnregisteredFromWaveMessage(Message):
         return ParseMode.HTML
 
 
+class UserIsPrivilegedMessage(Message):
+    def render(self, **kwargs):
+        return f"User {kwargs['username']} is privileged now"
+
+    def get_parse_mode(self):
+        return ParseMode.HTML

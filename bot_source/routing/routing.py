@@ -17,3 +17,4 @@ def initialize_handlers(dispatcher):
     dispatcher.add_handler(CommandHandler('unban', ah.unban_user_handler))
     dispatcher.add_handler(CommandHandler('start_bidding', ah.start_bidding_handler))
     dispatcher.add_handler(CommandHandler('assuring_step', ah.assuring_step_handler))
+    dispatcher.add_handler(CommandHandler('give_privilege', ah.give_privilege_handler))

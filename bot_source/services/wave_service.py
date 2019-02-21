@@ -80,6 +80,12 @@ class WaveService:
     def create_wave():
         try:
             new_wave = WaveFactory.get_new_wave()
+            privileged = u_man.get_all_privileged_users()
+
+            users_profiles = json.loads(new_wave.users_profiles)
+
+            new_wave.users_profiles = json.dumps(users_profiles)
+
             w_man.insert_wave(new_wave)
             return Status.NewWaveCreated
         except:

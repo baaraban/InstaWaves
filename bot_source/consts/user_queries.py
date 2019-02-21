@@ -22,3 +22,7 @@ class UserQueries:
     SELECT_BY_USERNAME = '''SELECT ID, UserId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged
                                 FROM USERS WHERE 
                                 USERNAME = ?'''
+
+    SELECT_PRIVILEGED = '''SELECT ID, UserId, Username, FirstName, Profiles, IsBanned, WarningsAmount, IsPrivileged
+                                FROM USERS WHERE 
+                                IsPrivileged = 1'''

@@ -44,3 +44,10 @@ class UserFactory:
             db_row[6],
             db_row[7]
         )
+
+    @staticmethod
+    def get_users_from_db_rows(rows):
+        result = []
+        for row in rows:
+            result.append(UserFactory.get_user_from_db_row(row))
+        return result
