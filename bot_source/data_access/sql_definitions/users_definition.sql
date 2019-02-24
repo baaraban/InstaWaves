@@ -3,7 +3,7 @@ CREATE TABLE "Users"(
     UserId CHAR(256) NOT NULL UNIQUE,
     Username CHAR(256),
     FirstName CHAR(256),
-    Profiles TEXT,
+    Profile CHAR(256),
     IsBanned BOOLEAN,
     WarningsAmount INT,
     IsPrivileged BOOLEAN
