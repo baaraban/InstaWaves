@@ -9,7 +9,7 @@ def insert_user(user):
         cursor.execute(UserQueries.INSERT, (user.user_id,
                                             user.username,
                                             user.first_name,
-                                            user.profiles,
+                                            user.profile,
                                             user.is_banned,
                                             user.warnings,
                                             user.is_privileged))
@@ -21,7 +21,7 @@ def update_user(user):
         cursor.execute(UserQueries.UPDATE, (user.user_id,
                                             user.username,
                                             user.first_name,
-                                            user.profiles,
+                                            user.profile,
                                             user.is_banned,
                                             user.warnings,
                                             user.is_privileged,

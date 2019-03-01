@@ -27,7 +27,7 @@ class InstaHelper:
             tmp, pointer = agent.get_likes(post, pointer=pointer)
             comments += tmp
 
-        return [x.owner for x in comments]
+        return [x.owner.login for x in comments]
 
     @staticmethod
     def get_posts_for_wave(usernames):

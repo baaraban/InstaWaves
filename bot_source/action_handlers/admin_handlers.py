@@ -30,11 +30,19 @@ def assuring_step_handler(bot, update):
     except:
         StatusHandler.handle_status(bot, update, WaveService.rollback_from_assuring_to_bidding())
 
+
 @admin_restricted
 @parameters_needed(1)
 def give_privilege_handler(bot, update):
     username = update.message.text.split()[1]
     StatusHandler.handle_status(bot, update, UserService.give_user_privilege(username), username=username)
+
+
+@admin_restricted
+@parameters_needed(1)
+def unprivilege_handler(bot, update):
+    username = update.message.text.split()[1]
+    StatusHandler.handle_status(bot, update, UserService.take_privilege_from_user(username), username=username)
 
 
 @admin_restricted

@@ -27,5 +27,6 @@ class Status(Enum):
     NotRegisteredInWave = 22
     UnregisteredFromWave = 23
     UserIsPrivileged = 24
+    UserIsUnprivileged = 25
 
 

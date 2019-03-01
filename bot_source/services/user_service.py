@@ -36,6 +36,15 @@ class UserService:
         return Status.UserIsPrivileged
 
     @staticmethod
+    def take_privilege_from_user(username):
+        if not u_man.user_exists_with_username(username):
+            return Status.UserDoesNotExist
+        user = u_man.get_by_username(username)
+        user.is_privileged = False
+        u_man.update_user(user)
+        return Status.UserIsUnprivileged
+
+    @staticmethod
     def ban_user(username):
         if not u_man.user_exists_with_username(username):
             return Status.UserDoesNotExist

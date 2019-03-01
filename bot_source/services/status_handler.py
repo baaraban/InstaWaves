@@ -26,7 +26,8 @@ class StatusHandler:
         Status.InstagramProfileHasNoPosts: InstagramProfileHasNoPostsMessage(),
         Status.NotRegisteredInWave: NotRegisteredInWaveMessage(),
         Status.UnregisteredFromWave: UnregisteredFromWaveMessage(),
-        Status.UserIsPrivileged: UserIsPrivilegedMessage()
+        Status.UserIsPrivileged: UserIsPrivilegedMessage(),
+        Status.UserIsUnprivileged: UserIsUnprivilegedMessage()
     }
 
     @staticmethod

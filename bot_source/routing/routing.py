@@ -18,3 +18,4 @@ def initialize_handlers(dispatcher):
     dispatcher.add_handler(CommandHandler('start_bidding', ah.start_bidding_handler))
     dispatcher.add_handler(CommandHandler('assuring_step', ah.assuring_step_handler))
     dispatcher.add_handler(CommandHandler('give_privilege', ah.give_privilege_handler))
+    dispatcher.add_handler(CommandHandler('unprivilege_user', ah.unprivilege_handler))

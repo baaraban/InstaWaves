@@ -242,3 +242,11 @@ class UserIsPrivilegedMessage(Message):
 
     def get_parse_mode(self):
         return ParseMode.HTML
+
+
+class UserIsUnprivilegedMessage(Message):
+    def render(self, **kwargs):
+        return f"User {kwargs['username']} is unprivileged now"
+
+    def get_parse_mode(self):
+        return ParseMode.HTML

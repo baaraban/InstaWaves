@@ -18,7 +18,7 @@ class WaveService:
                 return u_man.get_by_user_id(user_v.user_id)
             else:
                 u_man.insert_user(user_v)
-                return user_v
+                return u_man.get_by_user_id(user_v.user_id)
 
         if not InstaHelper.profile_exists(insta_username):
             return Status.InstagramProfileDoesNotExist
@@ -43,11 +43,8 @@ class WaveService:
         wave.users_profiles = json.dumps(to_work_with)
         w_man.update_wave(wave)
 
-        profiles = json.loads(user.profiles)
-        if insta_username not in profiles.keys():
-            profiles[insta_username] = insta_username
-            user.profiles = json.dumps(profiles)
-            u_man.update_user(user)
+        user.profile = insta_username
+        u_man.update_user(user)
 
         return Status.RegisteredForWave
 
@@ -80,9 +77,13 @@ class WaveService:
     def create_wave():
         try:
             new_wave = WaveFactory.get_new_wave()
+
             privileged = u_man.get_all_privileged_users()
 
             users_profiles = json.loads(new_wave.users_profiles)
+
+            for user in privileged:
+                users_profiles[user.user_id] = user.profile
 
             new_wave.users_profiles = json.dumps(users_profiles)
 
@@ -129,6 +130,8 @@ class WaveService:
         banned = []
         for warned_user_id, insta_profile in warned.items():
             user = u_man.get_by_user_id(warned_user_id)
+            if user.is_privileged:
+                continue
             user.warnings += 1
             warned_username.append(user.username)
             if user.warnings >= WARNINGS_LIMIT:

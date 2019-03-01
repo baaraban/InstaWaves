@@ -4,7 +4,7 @@ class User:
                  user_id,
                  username,
                  first_name,
-                 profiles,
+                 profile,
                  is_banned,
                  warnings,
                  is_privileged):
@@ -12,7 +12,7 @@ class User:
         self.user_id = user_id
         self.username = username
         self.first_name = first_name
-        self.profiles = profiles
+        self.profile = profile
         self.is_banned = is_banned
         self.warnings = warnings
         self.is_privileged = is_privileged
@@ -26,7 +26,7 @@ class UserFactory:
             update.effective_user.id,
             update.effective_user.username,
             update.effective_user.first_name,
-            '{}',
+            '',
             False,
             0,
             False
