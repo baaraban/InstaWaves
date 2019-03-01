@@ -24,7 +24,7 @@ class InstaHelper:
         comments, pointer = agent.get_comments(post)
 
         while pointer is not None:
-            tmp, pointer = agent.get_likes(post, pointer=pointer)
+            tmp, pointer = agent.get_comments(post, pointer=pointer)
             comments += tmp
 
         return [x.owner.login for x in comments]
