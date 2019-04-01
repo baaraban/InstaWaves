@@ -5,7 +5,7 @@ If you register for a wave, you should like and comment on the last post of all 
 # Wave states
 register state - users register for wave <br>
 bidding state - bot sends message with links to all posts which should be liked and commented on<br>
-assuring state - bot ensures that everybody completed rules of liking and commenting<br>.
+assuring state - bot ensures that everybody completed rules of liking and commenting<br>
 finished state - wave is finished. A new wave can be created<br>
 Admin user moderates the transition between wave states
 # Additional logic
