@@ -13,10 +13,3 @@ There is "privilege" functionality. Admin can make the user privileged. In this 
 # Instagram scraping credits
 The most credit for Instagram scraping logic should be given to @OlegYurchik. <br>
 https://github.com/OlegYurchik/pyInstagram - this is a repository which was the starting point for scraping functionality implementation.
-# Usage
-You can use this code, as you wish. I don't want to improve this project. <br>
-There is definitely a lot of things to improve. You can automate wave processes, implement a decent payment system, decouple admin and user functionality or just get rid of things like consts.py files, etc.<br>
-If you can make some money on this, I would appreciate if you contact me, but that's definitely not obligatory.<br>
-Initially, this project was made for one of my clients, but he appeared to be not the most pleasant one. Paolo, if you are reading this, you are a complete douche.<br>
-Please don't worry about stuff like API keys or something like that. It can't harm anyone and I am just to lazy to delete it.<br>
-Happy using!
